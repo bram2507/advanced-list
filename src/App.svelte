@@ -1,7 +1,8 @@
 <script lang="ts">
-  
+  import './app.css';
   import type List  from './Interfaces/List';
   import InputNote from './components/InputComponent/InputNote.svelte';
+  import app from './main';
   
   
   var listOfNotes:Array<List>;
@@ -23,12 +24,12 @@
    <InputNote on:updateList={getAllItems}/>
   </div>
 
-  <div class="card-list-group border-radius-sm">
+  <div class="w-64 h-64 grid grid-cols-4 gap-4 bg-slate-800">
     {#if listOfNotes != null}
       {#each listOfNotes  as item}
-        <span class="card-list-group-item" on:click={selectedItemOfList(item)}> 
+        <div class="card-list-group-item" on:click={selectedItemOfList(item)}> 
           {item.value} 
-        </span><br>
+        </div>
       {/each}
     {/if}
   </div>
@@ -37,9 +38,7 @@
 
 <style scoped>
   .card-list-group{
-    background-color: white;
-    width: 30rem;
-    min-height: 50rem;
+  
 
   }
 </style>
