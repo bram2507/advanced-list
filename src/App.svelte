@@ -1,33 +1,28 @@
 <script lang="ts">
   import './app.css';
-  import type List  from './Interfaces/List';
-  import InputNote from './components/InputComponent/InputNote.svelte';
-  import app from './main';
+  import type Note  from './Interfaces/Note';
+  import Input from './components/Input/Input.svelte';
   
-  
-  var listOfNotes:Array<List>;
+  var AllNotes:Array<Note> = new Array<Note>();
 
-  const selectedItemOfList = (list:List):void =>{
-    console.log("Nota seleccionada",list.id, list.value);
-    return;
+  const delteItemOfList = (list:Note):void => {
+    const filterNotes = AllNotes.filter(l => { return list.id !== l.id});
+    AllNotes = filterNotes;
   };
 
   const getAllItems = (currentNotes:CustomEvent) => {
-    listOfNotes = [...currentNotes.detail];
+    AllNotes = currentNotes.detail;
   };
 </script>
 
-
-<main>
-
-  <div>
-   <InputNote on:updateList={getAllItems}/>
-  </div>
-
-  <div class="w-64 h-64 grid grid-cols-4 gap-4 bg-slate-800">
-    {#if listOfNotes != null}
-      {#each listOfNotes  as item}
-        <div class="card-list-group-item" on:click={selectedItemOfList(item)}> 
+<main class=" bg-primary min-w-screen flex flex-col h-screen justify-center">
+  <div class="w-80 h-fit rounded-md shadow-sm m-auto  flex-col content-center">
+    <Input on:updateList={getAllItems} Notes={AllNotes}/>
+    {#if AllNotes != null}
+      {#each AllNotes  as item}
+        <div class="w-100 h-10 m-auto bg-white rounded-sm mt-2 mb-2 shadow-md flex justify-center content-center"  
+                         on:keypress={(event) => {}} 
+                         on:click={delteItemOfList(item)} > 
           {item.value} 
         </div>
       {/each}
@@ -35,10 +30,3 @@
   </div>
    
 </main>
-
-<style scoped>
-  .card-list-group{
-  
-
-  }
-</style>

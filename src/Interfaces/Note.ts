@@ -1,4 +1,4 @@
-export default interface List {
+export default interface Note {
   id: number;
   value: String;
 }
