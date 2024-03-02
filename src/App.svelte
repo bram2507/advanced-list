@@ -5,7 +5,7 @@
   
   var AllNotes:Array<Note> = new Array<Note>();
 
-  const delteItemOfList = (list:Note):void => {
+  const delteNote = (list:Note):void => {
     const filterNotes = AllNotes.filter(l => { return list.id !== l.id});
     AllNotes = filterNotes;
   };
@@ -15,18 +15,25 @@
   };
 </script>
 
-<main class=" bg-primary min-w-screen flex flex-col h-screen justify-center">
-  <div class="w-80 h-fit rounded-md shadow-sm m-auto  flex-col content-center">
+<main class=" bg-primary min-w-screen flex flex-col min-h-screen justify-center">
+  <div class="relative w-80 h-fit rounded-md shadow-sm m-auto flex-col content-center mt-250">
     <Input on:updateList={getAllItems} Notes={AllNotes}/>
-    {#if AllNotes != null}
-      {#each AllNotes  as item}
-        <div class="w-100 h-10 m-auto bg-white rounded-sm mt-2 mb-2 shadow-md flex justify-center content-center"  
-                         on:keypress={(event) => {}} 
-                         on:click={delteItemOfList(item)} > 
-          {item.value} 
+    <div class="flex-col m-auto w-80 h-fit justify-center align-middle">
+      {#if AllNotes != null}
+        {#each AllNotes  as item}
+        <div class="w-100 min-h-10 bg-white rounded-sm mt-3 mb-3 shadow-md flex justify-between pl-2 pt-2 pb-2 hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-5">
+          <span on:keypress={(event) => {}}>
+            {item.value}
+          </span>
+          <div  class="cursor-pointer pr-2 "> 
+              <svg on:click={delteNote(item)} xmlns="http://www.w3.org/2000/svg" fill="#3B5249" viewBox="0 0 48 48" width="25px" height="25px"><path d="M 24 4 C 12.972066 4 4 12.972074 4 24 C 4 35.027926 12.972066 44 24 44 C 35.027934 44 44 35.027926 44 24 C 44 12.972074 35.027934 4 24 4 z M 24 7 C 33.406615 7 41 14.593391 41 24 C 41 33.406609 33.406615 41 24 41 C 14.593385 41 7 33.406609 7 24 C 7 14.593391 14.593385 7 24 7 z M 30.486328 15.978516 A 1.50015 1.50015 0 0 0 29.439453 16.439453 L 24 21.878906 L 18.560547 16.439453 A 1.50015 1.50015 0 0 0 17.484375 15.984375 A 1.50015 1.50015 0 0 0 16.439453 18.560547 L 21.878906 24 L 16.439453 29.439453 A 1.50015 1.50015 0 1 0 18.560547 31.560547 L 24 26.121094 L 29.439453 31.560547 A 1.50015 1.50015 0 1 0 31.560547 29.439453 L 26.121094 24 L 31.560547 18.560547 A 1.50015 1.50015 0 0 0 30.486328 15.978516 z"/></svg>
+          </div>
         </div>
-      {/each}
-    {/if}
+         
+        {/each}
+      {/if}
+    </div>
   </div>
+ 
    
 </main>

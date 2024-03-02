@@ -11,7 +11,7 @@ export default {
       metal: "#565584",
       tahiti: "#3ab7bf",
       silver: "#ecebff",
-      "bubble-gum": "#ff77e9",
+      bubble_gum: "#ff77e9",
       bermuda: "#78dcca",
       primary: "#3B5249",
       second: "#519872",

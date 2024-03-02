@@ -22,9 +22,9 @@ const keyUpEvent = (event:KeyboardEvent) => {
 
 <main class="isolate bg-white px-6 py-24 sm:py-10 lg:px-8 rounded-sm shadow-sm">
   <div class="sm:col-span-2">
-    <label for="company" class="block text-sm font-semibold leading-6 text-gray-900">Escribe una nota</label>
+    <label for="company" class="block text-sm font-semibold leading-6 text-primary font-medium text-base">Escribe una nota</label>
     <div class="mt-2.5">
-      <input type="text" name="company" id="company" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" bind:value={input} on:keyup="{keyUpEvent}">
+      <input type="text" name="company" id="company" autocomplete="organization" class="block w-full rounded-sm border-0  px-3.5 py-2 ring-2 ring-inset ring-primary/50 focus:ring-primary/50 sm:text-sm sm:leading-6"  placeholder="Escribe una nota" bind:value={input} on:keyup="{keyUpEvent}">
     </div>
 </main>
 
